@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Site</title>
+    
+    <!-- Stylesheets and fonts -->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=PT+Sans&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="container1">
+            <div class="c1">
+                <h1 class="name-animation">Hi, This is Mansvi Meshram!</h1> <!-- Added class for animation -->
+                <p class="about">PROGRAMMER</p>
+            </div>
+        </div>
+
+        <!-- Image and About Section -->
+        <div class="container2">
+            <img src="./images/mm.jpeg" alt="Portrait of Mansvi Meshram" height="300px" class="myimg">
+            <h1 class="myimg1">HELLO EVERYONE.....</h1>
+            <p class="myimg2">I'm a Web Developer and Designer, an Enthusiast Coder, and I also love ❤️ singing.</p>
+        </div>
+
+        <!-- Resume Section -->
+        <div class="container3">
+            <h1 class="res1">MY RESUME</h1>
+            <button class="res2">
+                <a class="res3" href="./resume/Mansvi Resume.pdf">Download PDF of my Resume</a>
+            </button>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="container4">
+            <h1 class="ski1">MY SKILLS</h1>
+            <div class="ski5">
+                <div class="ski10"><img src="./images/webd.jpeg" height="170px" class="ski3"></div>
+                <div class="ski11"><h2 class="ski2">WEB DEVELOPMENT AND DESIGNING</h2>
+                    <P class="ski4">I'm an enthusiast web developer and designer enhancing my knowledge in the field of <b>FULL-STACK development</b>.</P>
+                </div>
+            </div>
+
+            <div class="ski6">
+                <div class="ski12"><img src="./images/dsa.jpg" height="170px" width="300px" class="ski7"></div>
+                <div class="ski13"><h2 class="ski8">DATA STRUCTURES AND ALGORITHMS</h2>
+                    <P class="ski9">I'm an enthusiast DSA problem solver in <b>Python</b> and love to solve problems on <b>leetcode</b>.</P>
+                </div>
+            </div>
+
+            <div class="ski14">
+                <div class="ski15"><img src="./images/song.jpg.jpg" height="170px" width="300px" class="ski7"></div>
+                <div class="ski16"><h2 class="ski8">SINGING</h2>
+                    <P class="ski17">I love singing. My favourite singer is <b>Arijit Singh</b>. My favourite song is <i><b>Muskurane Ki Wajah Tum Ho (CITYLIGHTS)</b></i>.</P>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="container5">
+            <h1 class="con1">CONTACT ME</h1>
+            <p class="con4">If anyone needs expertise in WEB D and problem solving in DSA, then get in touch with me. Or if you love singing as much as I do, feel free to contact me!</p>
+            <button class="btn1"><a class="btn" href="mailto:raianugrah44@gmail.com">CONTACT ME</a></button>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="container6">
+            <div class="fo1">
+                <a class="a1" href="">Instagram</a>
+                <a class="a2" href="https://www.linkedin.com/in/mansvi-meshram-bba130326">Linkedin</a>
+                <p class="a3">© Mansvi Meshram</p>
+            </div>
+        </div>
+    </div>
+
+    JavaScript to trigger animation on scroll
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameElement = document.querySelector('.name-animation');
+
+            // Split the name into individual words and wrap each word in a <span> to animate separately
+            const words = nameElement.textContent.split(' '); // Split the name into words
+            nameElement.innerHTML = ''; // Clear the original text
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.textContent = word;
+                nameElement.appendChild(span);
+                nameElement.appendChild(document.createTextNode(' ')); // Add a space between the words
+            });
+
+            // Create an Intersection Observer to detect when the name section is in view
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When the section is in view, trigger the animation
+                        nameElement.classList.add('animated-name');
+                    } else {
+                        // When the section is out of view, reset the animation (so it will play again when the section comes into view)
+                        nameElement.classList.remove('animated-name');
+                    }
+                });
+            }, { threshold: 0.5 }); // 50% of the name section should be visible
+
+            // Start observing the name element
+            observer.observe(nameElement);
+        });
+    </script>
+</body>
+</html>
